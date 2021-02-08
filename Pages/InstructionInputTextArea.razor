@@ -1,0 +1,29 @@
+﻿<div class="html-container code-area-container">
+    Instruction Input:
+    <button type="button" class="btn btn-primary" @onclick="CompileInput">Compile</button>
+    <button type="button" class="btn btn-warning" @onclick="(e => InputDisabled = !InputDisabled)">Edit</button>
+    <textarea disabled="@InputDisabled" id="instructionInputTextArea" @bind="InputTextGiven" @bind:event="oninput" placeholder="Enter Instructions Here..."></textarea>
+</div>
+
+<div class="html-container code-area-container">
+    <ul class="list-group executing-instruction-list">
+        <li class="list-group-item">Dapibus ac facilisis in</li>
+        <li class="list-group-item list-group-item-secondary">This is a primary list group item</li>
+        <li class="list-group-item list-group-item-secondary">This is a secondary list group item</li>
+    </ul>
+</div>
+
+
+
+@code {
+    private string InputTextGiven;
+
+    public bool InputDisabled = false;
+
+    public void CompileInput(MouseEventArgs e) 
+    {
+        InputTextGiven = InputTextGiven + " TESTING ADDING TO STRING";
+        var teststring = InputTextGiven;
+        InputDisabled = !InputDisabled;
+    }
+}

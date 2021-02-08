@@ -1,0 +1,23 @@
+﻿Registers: 
+<table class="table feedback">
+    <thead>
+        <tr>
+            <th scope="col">Register</th>
+            <th scope="col">Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var register in RegisterTableData.Registers)
+        {
+            <tr>
+                <th scope="row">@register.Key</th>
+                <td>@register.Value</td>
+            </tr>
+
+        }
+    </tbody>
+</table>
+
+@code {
+
+}

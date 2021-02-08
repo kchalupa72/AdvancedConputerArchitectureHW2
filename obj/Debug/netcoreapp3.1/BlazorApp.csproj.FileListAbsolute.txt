@@ -50,3 +50,11 @@ C:\Users\kenne\source\repos\BlazorApp\obj\Debug\netcoreapp3.1\BlazorApp.genrunti
 C:\Users\kenne\source\repos\BlazorApp\obj\Debug\netcoreapp3.1\BlazorApp.csproj.CopyComplete
 C:\Users\kenne\source\repos\BlazorApp\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\AssemblyPage.razor.g.cs
 C:\Users\kenne\source\repos\BlazorApp\obj\Debug\netcoreapp3.1\Razor\Pages\AssemblyPage.razor.g.cs
+C:\Users\kenne\source\repos\BlazorApp\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\InstructionTable.razor.g.cs
+C:\Users\kenne\source\repos\BlazorApp\obj\Debug\netcoreapp3.1\Razor\Pages\InstructionTable.razor.g.cs
+C:\Users\kenne\source\repos\BlazorApp\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\RegisterTable.razor.g.cs
+C:\Users\kenne\source\repos\BlazorApp\obj\Debug\netcoreapp3.1\Razor\Pages\RegisterTable.razor.g.cs
+C:\Users\kenne\source\repos\BlazorApp\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\InstructionInputTextArea.razor.g.cs
+C:\Users\kenne\source\repos\BlazorApp\obj\Debug\netcoreapp3.1\Razor\Pages\InstructionInputTextArea.razor.g.cs
+C:\Users\kenne\source\repos\BlazorApp\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\ExecutingInstructions.razor.g.cs
+C:\Users\kenne\source\repos\BlazorApp\obj\Debug\netcoreapp3.1\Razor\Pages\ExecutingInstructions.razor.g.cs
