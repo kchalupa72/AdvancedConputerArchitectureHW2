@@ -5,13 +5,13 @@ using System.Threading.Tasks;
 
 namespace BlazorApp.Data
 {
-    public class ProvidedInstruction
+    public class ApprovedInstruction
     {
         public string Operation { get; set; }
 
         public List<string> Arguements { get; set; }
 
-        public ProvidedInstruction(string instructionGiven) 
+        public ApprovedInstruction(string instructionGiven) 
         {
             var instructionComponents = instructionGiven.Split(' ').ToList();
 

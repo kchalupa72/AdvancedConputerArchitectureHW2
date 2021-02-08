@@ -26,6 +26,7 @@
       "BlazorApp/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": "5.0.2",
+          "bootstrap": "4.6.0",
           "Microsoft.AspNetCore.Antiforgery": "5.0.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "5.0.0.0",
           "Microsoft.AspNetCore.Authentication.Cookies": "5.0.0.0",
@@ -317,6 +318,13 @@
           "BlazorApp.dll": {}
         }
       },
+      "bootstrap/4.6.0": {
+        "dependencies": {
+          "jQuery": "3.0.0",
+          "popper.js": "1.16.1"
+        }
+      },
+      "jQuery/3.0.0": {},
       "Microsoft.AspNetCore.Mvc.Razor.Extensions/5.0.2": {
         "dependencies": {
           "Microsoft.AspNetCore.Razor.Language": "5.0.2",
@@ -504,6 +512,7 @@
         }
       },
       "Microsoft.NETCore.Platforms/2.1.2": {},
+      "popper.js/1.16.1": {},
       "System.Collections.Immutable/5.0.0": {},
       "System.Memory/4.5.4": {},
       "System.Reflection.Metadata/5.0.0": {},
@@ -2221,6 +2230,20 @@
       "serviceable": false,
       "sha512": ""
     },
+    "bootstrap/4.6.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-nGsIRcbAcBybxBeoL5H6Uax8bb+nrT+tbx3/3n1yXCWq/s+fgEvdo0BAYIq1GmbBizA2KKShyFNiJaSanonIIQ==",
+      "path": "bootstrap/4.6.0",
+      "hashPath": "bootstrap.4.6.0.nupkg.sha512"
+    },
+    "jQuery/3.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-xFfntV19HzCtKdJWOp/XT9PUY3SslokTDDLFJZdBug36j1XVhw1+vPQ/n7Gd5y+jdpesn5B1m1yn1qIUq57jlA==",
+      "path": "jquery/3.0.0",
+      "hashPath": "jquery.3.0.0.nupkg.sha512"
+    },
     "Microsoft.AspNetCore.Mvc.Razor.Extensions/5.0.2": {
       "type": "package",
       "serviceable": true,
@@ -2283,6 +2306,13 @@
       "sha512": "sha512-mOJy3M0UN+LUG21dLGMxaWZEP6xYpQEpLuvuEQBaownaX4YuhH6NmNUlN9si+vNkAS6dwJ//N1O4DmLf2CikVg==",
       "path": "microsoft.netcore.platforms/2.1.2",
       "hashPath": "microsoft.netcore.platforms.2.1.2.nupkg.sha512"
+    },
+    "popper.js/1.16.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-6GiVZho0vwBnId7pK7NLTjMGq4F0/VE65I08CCeKlarVoUt1w8SGTtJmhNo/0pK38EGUP/xbT4+OkWB8UTMPBw==",
+      "path": "popper.js/1.16.1",
+      "hashPath": "popper.js.1.16.1.nupkg.sha512"
     },
     "System.Collections.Immutable/5.0.0": {
       "type": "package",

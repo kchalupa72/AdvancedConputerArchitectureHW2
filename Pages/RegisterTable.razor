@@ -1,4 +1,7 @@
-﻿Registers: 
+﻿@inject Registers registers
+
+<h4>Registers:</h4>
+
 <table class="table feedback">
     <thead>
         <tr>
@@ -7,11 +10,11 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var register in RegisterTableData.Registers)
+        @foreach (var register in registers.RegisterRepo)
         {
             <tr>
                 <th scope="row">@register.Key</th>
-                <td>@register.Value</td>
+                <td>@register.Value.Value.ToString()</td>
             </tr>
 
         }

@@ -102,22 +102,46 @@ using System.Collections.Generic;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 18 "C:\Users\kenne\source\repos\BlazorApp\Pages\InstructionInputTextArea.razor"
+#line 49 "C:\Users\kenne\source\repos\BlazorApp\Pages\InstructionInputTextArea.razor"
        
     private string InputTextGiven;
 
+    //private ProvidedInstructionManager InstructionManager = new ProvidedInstructionManager();
+
+
     public bool InputDisabled = false;
 
-    public void CompileInput(MouseEventArgs e) 
+    public void CompileInput(MouseEventArgs e)
     {
-        InputTextGiven = InputTextGiven + " TESTING ADDING TO STRING";
-        var teststring = InputTextGiven;
+        InstructionManager.FilterInstructions(SplitInstructions(InputTextGiven));
         InputDisabled = !InputDisabled;
+        InvokeAsync(() => StateHasChanged()); ;
+    }
+
+    private List<string> SplitInstructions(string instructionsGiven)
+    {
+        var instructions = InputTextGiven.Split(new Char[] { ';', '\n' }).ToList();
+        instructions.RemoveAll(i => string.IsNullOrEmpty(i));
+        return instructions;
+    }
+
+    private string StringifyInstruction(ApprovedInstruction instruction)
+    {
+        var stringInstruction = instruction.Operation;
+        instruction.Arguements.ForEach(arg => stringInstruction = stringInstruction + " " + arg);
+        return stringInstruction;
+    }
+
+    public void Execute() 
+    {
+        ExecutionManager.ExecuteInstruction(InstructionManager.Instructions.FirstOrDefault());
     }
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private ExecutionManager ExecutionManager { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private ProvidedInstructionManager InstructionManager { get; set; }
     }
 }
 #pragma warning restore 1591

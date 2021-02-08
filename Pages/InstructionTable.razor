@@ -1,30 +1,28 @@
-﻿<div class="css-container code-area-container">
-    Instructions:
-    <div class="css-container info-area-container">
-        <table class="table feedback">
-            <thead>
+﻿<div class="info-area-container">
+    <h5>Available Instructions:</h5>
+    <table class="table table-sm feedback">
+        <thead>
+            <tr>
+                <th scope="col">Instruction</th>
+                <th scope="col">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var instruction in GetInstructions())
+            {
                 <tr>
-                    <th scope="col">Instruction</th>
-                    <th scope="col">Description</th>
+                    <th scope="row">@instruction.Key</th>
+                    <td>@instruction.Value</td>
                 </tr>
-            </thead>
-            <tbody>
-                @foreach (var instruction in GetInstructions())
-                {
-                    <tr>
-                        <th scope="row">@instruction.Key</th>
-                        <td>@instruction.Value</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </div>
+            }
+        </tbody>
+    </table>
 </div>
-    @code {
-        private InstructionSet instructionSet = new InstructionSet();
+@code {
+    private InstructionSet instructionSet = new InstructionSet();
 
-        private Dictionary<string, string> GetInstructions()
-        {
-            return instructionSet.Instructions;
-        }
+    private Dictionary<string, string> GetInstructions()
+    {
+        return instructionSet.Instructions;
     }
+}

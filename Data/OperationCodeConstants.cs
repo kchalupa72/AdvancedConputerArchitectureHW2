@@ -9,5 +9,6 @@ namespace BlazorApp.Data
     {
         public const string Add = "Add";
         public const string Sub = "Sub";
+        public const string Incr = "Incr";
     }
 }

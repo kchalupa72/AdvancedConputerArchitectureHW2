@@ -7,15 +7,15 @@ namespace BlazorApp.Data
 {
     public class ProvidedInstructionManager
     {
-        private List<ProvidedInstruction> Instructions = new List<ProvidedInstruction>();
+        public List<ApprovedInstruction> Instructions = new List<ApprovedInstruction>();
 
         public void FilterInstructions(List<string> instructionsGiven) 
         {
             foreach (var instruction in instructionsGiven)
             {
-                if (IsInstructionValid(instruction)) 
+                if (IsInstructionValid(instruction.Trim())) 
                 {
-                    var tempInstruction = new ProvidedInstruction(instruction);
+                    var tempInstruction = new ApprovedInstruction(instruction);
                     Instructions.Add(tempInstruction);
                 }
             }

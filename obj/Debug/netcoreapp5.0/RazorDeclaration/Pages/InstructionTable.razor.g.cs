@@ -102,15 +102,14 @@ using System.Collections.Generic;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 23 "C:\Users\kenne\source\repos\BlazorApp\Pages\InstructionTable.razor"
-           
-        private InstructionSet instructionSet = new InstructionSet();
+#line 21 "C:\Users\kenne\source\repos\BlazorApp\Pages\InstructionTable.razor"
+       
+    private InstructionSet instructionSet = new InstructionSet();
 
-        private Dictionary<string, string> GetInstructions()
-        {
-            return instructionSet.Instructions;
-        }
-    
+    private Dictionary<string, string> GetInstructions()
+    {
+        return instructionSet.Instructions;
+    }
 
 #line default
 #line hidden

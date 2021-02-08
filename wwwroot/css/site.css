@@ -206,7 +206,7 @@ app {
         height: 40%;
         font-size: 12px;
         padding: 14px;
-        overflow: hidden;
+        margin-top:10%;
     }
 
     .code-area .info-area-container {
@@ -216,6 +216,7 @@ app {
         height: 20%;
         font-size: 12px;
         padding: 14px;
+        margin-top: 10%;
     }
 
     .code-area textarea {
@@ -227,14 +228,25 @@ app {
         padding: 10px;
     }
 
-    .code-area executing-instruction-list {
+    .code-area .code-area-container .executing-instruction-list {
         resize: none;
         outline: none;
         width: 100%;
         height: 100%;
         font-size: 12px;
         padding: 10px;
-        position: absolute;
+        padding-top: 20px;
+        overflow: scroll;
+        max-height: 300px;
+    }
+
+    .code-area .table {
+        resize: none;
+        outline: none;
+        width: 100%;
+        height: 100%;
+        font-size: 12px;
+        padding: 10px;
     }
 
 .preview-area {
@@ -257,5 +269,5 @@ app {
 
 .feedback {
     width: 100%;
-    font-size: 18px;
+    font-size: 12px;
 }

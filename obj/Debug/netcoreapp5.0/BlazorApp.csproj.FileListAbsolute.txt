@@ -379,3 +379,5 @@ C:\Users\kenne\source\repos\BlazorApp\bin\Debug\netcoreapp5.0\ru\Microsoft.CodeA
 C:\Users\kenne\source\repos\BlazorApp\bin\Debug\netcoreapp5.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
 C:\Users\kenne\source\repos\BlazorApp\bin\Debug\netcoreapp5.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
 C:\Users\kenne\source\repos\BlazorApp\bin\Debug\netcoreapp5.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\kenne\source\repos\BlazorApp\obj\Debug\netcoreapp5.0\RazorDeclaration\Pages\MemoryArea.razor.g.cs
+C:\Users\kenne\source\repos\BlazorApp\obj\Debug\netcoreapp5.0\Razor\Pages\MemoryArea.razor.g.cs

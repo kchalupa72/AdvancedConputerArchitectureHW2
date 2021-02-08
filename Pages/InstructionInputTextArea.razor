@@ -1,15 +1,46 @@
-﻿<div class="html-container code-area-container">
-    Instruction Input:
+﻿@inject ProvidedInstructionManager InstructionManager
+@inject ExecutionManager ExecutionManager
+
+<div class="code-area-container">
+    <h4>Instruction Input:</h4>
+
     <button type="button" class="btn btn-primary" @onclick="CompileInput">Compile</button>
     <button type="button" class="btn btn-warning" @onclick="(e => InputDisabled = !InputDisabled)">Edit</button>
+    <button type="button" class="btn btn-primary" @onclick="Execute">
+        <span class="glyphicon glyphicon-search"></span> Execute
+    </button>
+
     <textarea disabled="@InputDisabled" id="instructionInputTextArea" @bind="InputTextGiven" @bind:event="oninput" placeholder="Enter Instructions Here..."></textarea>
 </div>
 
-<div class="html-container code-area-container">
+<div class="code-area-container">
+    <h4>Execution Instructions:</h4>
+
     <ul class="list-group executing-instruction-list">
-        <li class="list-group-item">Dapibus ac facilisis in</li>
-        <li class="list-group-item list-group-item-secondary">This is a primary list group item</li>
-        <li class="list-group-item list-group-item-secondary">This is a secondary list group item</li>
+        @if (!InstructionManager.Instructions.Any())
+        {
+            // fill table with empty data
+            for (int i = 0; i < 5; i++)
+            {
+                var placeHolderText = "";
+                if (i == 0) 
+                {
+                    placeHolderText = "Compile Instructions to Fill Execution List.";
+                }
+                <li class="list-group-item">
+                       @placeHolderText
+                </li>
+            }
+        }
+        else
+        {
+            @foreach (var instruction in InstructionManager.Instructions)
+            {
+                <li class="list-group-item">
+                    @StringifyInstruction(instruction);
+                </li>
+            }
+        }
     </ul>
 </div>
 
@@ -18,12 +49,34 @@
 @code {
     private string InputTextGiven;
 
+    //private ProvidedInstructionManager InstructionManager = new ProvidedInstructionManager();
+
+
     public bool InputDisabled = false;
 
-    public void CompileInput(MouseEventArgs e) 
+    public void CompileInput(MouseEventArgs e)
     {
-        InputTextGiven = InputTextGiven + " TESTING ADDING TO STRING";
-        var teststring = InputTextGiven;
+        InstructionManager.FilterInstructions(SplitInstructions(InputTextGiven));
         InputDisabled = !InputDisabled;
+        InvokeAsync(() => StateHasChanged()); ;
+    }
+
+    private List<string> SplitInstructions(string instructionsGiven)
+    {
+        var instructions = InputTextGiven.Split(new Char[] { ';', '\n' }).ToList();
+        instructions.RemoveAll(i => string.IsNullOrEmpty(i));
+        return instructions;
+    }
+
+    private string StringifyInstruction(ApprovedInstruction instruction)
+    {
+        var stringInstruction = instruction.Operation;
+        instruction.Arguements.ForEach(arg => stringInstruction = stringInstruction + " " + arg);
+        return stringInstruction;
+    }
+
+    public void Execute() 
+    {
+        ExecutionManager.ExecuteInstruction(InstructionManager.Instructions.FirstOrDefault());
     }
 }

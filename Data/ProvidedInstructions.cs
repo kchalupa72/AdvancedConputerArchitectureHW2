@@ -7,19 +7,19 @@ namespace BlazorApp.Data
 {
     public class ProvidedInstructions
     {
-        private List<ProvidedInstruction> Instructions = new List<ProvidedInstruction>();
+        private List<ApprovedInstruction> Instructions = new List<ApprovedInstruction>();
 
-        public void AddInstruction(ProvidedInstruction instruction) 
+        public void AddInstruction(ApprovedInstruction instruction) 
         {
             Instructions.Add(instruction);
         }
 
-        public void RemoveInstruction(ProvidedInstruction instruction) 
+        public void RemoveInstruction(ApprovedInstruction instruction) 
         {
             Instructions.Remove(instruction);
         }
 
-        public List<ProvidedInstruction> GetAllInstructions() 
+        public List<ApprovedInstruction> GetAllInstructions() 
         {
             return Instructions;        
         }
