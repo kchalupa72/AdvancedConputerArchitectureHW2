@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace BlazorApp.Data
 {
@@ -10,6 +8,8 @@ namespace BlazorApp.Data
         public string Operation { get; set; }
 
         public List<string> Arguements { get; set; }
+
+        public bool IsNext = false;
 
         public ApprovedInstruction(string instructionGiven) 
         {

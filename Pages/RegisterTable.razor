@@ -12,7 +12,7 @@
     <tbody>
         @foreach (var register in registers.RegisterRepo)
         {
-            <tr>
+            <tr class="@GetRegisterChangeClass(register.Value.JustChanged)">
                 <th scope="row">@register.Key</th>
                 <td>@register.Value.Value.ToString()</td>
             </tr>
@@ -22,5 +22,13 @@
 </table>
 
 @code {
+    public void RefreshMe()
+    {
+        StateHasChanged();
+    }
 
+    public string GetRegisterChangeClass(bool justChanged)
+    {
+        return (justChanged)? "just-changed" : "";
+    }
 }

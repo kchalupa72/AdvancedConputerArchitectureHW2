@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace BlazorApp.Data
 {
     public class ProvidedInstructionManager
     {
         public List<ApprovedInstruction> Instructions = new List<ApprovedInstruction>();
+
+        public int InstructionIndex = 0;
 
         public void FilterInstructions(List<string> instructionsGiven) 
         {

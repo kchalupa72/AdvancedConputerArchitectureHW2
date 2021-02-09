@@ -95,7 +95,7 @@ using System.Collections.Generic;
 #line hidden
 #nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/Assembly")]
-    public partial class AssemblyPage : Microsoft.AspNetCore.Components.ComponentBase
+    public partial class AssemblyPage : Microsoft.AspNetCore.Components.ComponentBase, IDisposable
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -103,18 +103,37 @@ using System.Collections.Generic;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 15 "C:\Users\kenne\source\repos\BlazorApp\Pages\AssemblyPage.razor"
+#line 20 "C:\Users\kenne\source\repos\BlazorApp\Pages\AssemblyPage.razor"
        
     private string InputTextProvided;
-    
-    public void CompileInstructions() 
+
+    protected RegisterTable RegisterTableChildComponent;
+
+    public void CompileInstructions()
     {
-        
+
+    }
+
+    protected override void OnInitialized()
+    {
+        registerState.OnChange += StateHasChanged;
+        registerState.OnChange += UpdateRegisterTable;
+    }
+
+    private void UpdateRegisterTable()
+    {
+        RegisterTableChildComponent.RefreshMe();
+    }
+
+    public void Dispose()
+    {
+        registerState.OnChange -= StateHasChanged;
     }
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private RegisterState registerState { get; set; }
     }
 }
 #pragma warning restore 1591

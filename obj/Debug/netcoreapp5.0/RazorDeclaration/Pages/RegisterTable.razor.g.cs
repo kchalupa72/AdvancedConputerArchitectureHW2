@@ -101,6 +101,22 @@ using System.Collections.Generic;
         {
         }
         #pragma warning restore 1998
+#nullable restore
+#line 24 "C:\Users\kenne\source\repos\BlazorApp\Pages\RegisterTable.razor"
+       
+    public void RefreshMe()
+    {
+        StateHasChanged();
+    }
+
+    public string GetRegisterChangeClass(bool justChanged)
+    {
+        return (justChanged)? "just-changed" : "";
+    }
+
+#line default
+#line hidden
+#nullable disable
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private Registers registers { get; set; }
     }
 }

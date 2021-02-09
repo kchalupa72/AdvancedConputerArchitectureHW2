@@ -1,21 +1,26 @@
 ﻿@inject ProvidedInstructionManager InstructionManager
 @inject ExecutionManager ExecutionManager
+@inject RegisterState RegisterState
 
 <div class="code-area-container">
     <h4>Instruction Input:</h4>
 
-    <button type="button" class="btn btn-primary" @onclick="CompileInput">Compile</button>
-    <button type="button" class="btn btn-warning" @onclick="(e => InputDisabled = !InputDisabled)">Edit</button>
-    <button type="button" class="btn btn-primary" @onclick="Execute">
-        <span class="glyphicon glyphicon-search"></span> Execute
+    <button type="button" class="btn btn-primary" @onclick="CompileInput">
+        <span class="oi oi-book"></span>
+        Compile
     </button>
-
+    <button type="button" class="btn btn-warning" @onclick="(e => InputDisabled = !InputDisabled)">
+        <span class="oi oi-document"></span>
+        Edit
+    </button>
     <textarea disabled="@InputDisabled" id="instructionInputTextArea" @bind="InputTextGiven" @bind:event="oninput" placeholder="Enter Instructions Here..."></textarea>
 </div>
 
 <div class="code-area-container">
     <h4>Execution Instructions:</h4>
-
+    <button type="button" class="btn btn-success" @onclick="ExecuteInstruction">
+        <span class="oi oi-media-play"></span> Execute
+    </button>
     <ul class="list-group executing-instruction-list">
         @if (!InstructionManager.Instructions.Any())
         {
@@ -23,22 +28,30 @@
             for (int i = 0; i < 5; i++)
             {
                 var placeHolderText = "";
-                if (i == 0) 
+                if (i == 0)
                 {
                     placeHolderText = "Compile Instructions to Fill Execution List.";
                 }
                 <li class="list-group-item">
-                       @placeHolderText
+                    @placeHolderText
                 </li>
             }
         }
         else
         {
+            var i = 0;
             @foreach (var instruction in InstructionManager.Instructions)
             {
-                <li class="list-group-item">
+                var placeHolderListItemClass = "list-group-item";
+                if (InstructionManager.InstructionIndex == i) 
+                {
+                    placeHolderListItemClass = placeHolderListItemClass + " next-instruction";
+                }
+                <li class="@placeHolderListItemClass">
                     @StringifyInstruction(instruction);
                 </li>
+
+                i++;
             }
         }
     </ul>
@@ -75,8 +88,11 @@
         return stringInstruction;
     }
 
-    public void Execute() 
+    public void ExecuteInstruction()
     {
-        ExecutionManager.ExecuteInstruction(InstructionManager.Instructions.FirstOrDefault());
+        //TODO Make this an execute next instruction method
+        ExecutionManager.ExecuteInstruction(InstructionManager.Instructions.ElementAt(InstructionManager.InstructionIndex));
+        InstructionManager.InstructionIndex++;
+        RegisterState.RegistersStateChanged();
     }
 }

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace BlazorApp.Data
+﻿namespace BlazorApp.Data
 {
     public class RegisterIdentifierConstants
     {
@@ -18,6 +13,5 @@ namespace BlazorApp.Data
         public const string T9 = "$t9";
         public const string K0 = "$k0";
         public const string K1 = "$k1";
-
     }
-}
+}     
