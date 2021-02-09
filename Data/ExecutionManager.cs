@@ -5,9 +5,19 @@ namespace BlazorApp.Data
     public class ExecutionManager
     {
         public Registers registers;
-        public ExecutionManager(Registers _registers) 
+        
+        public ProvidedInstructionManager InstructionManager;
+        
+        public ExecutionManager(Registers _registers, ProvidedInstructionManager instructionManager) 
         {
             registers = _registers;
+            InstructionManager = instructionManager;
+        }
+
+        public void ExecuteNextIntsruction() 
+        {
+            ExecuteInstruction(InstructionManager.GetNextInstruction());
+            InstructionManager.InstructionIndex++;
         }
 
         public void ExecuteInstructions(List<ApprovedInstruction> instructions ) 

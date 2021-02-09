@@ -103,7 +103,7 @@ using System.Collections.Generic;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 20 "C:\Users\kenne\source\repos\BlazorApp\Pages\AssemblyPage.razor"
+#line 18 "C:\Users\kenne\source\repos\BlazorApp\Pages\AssemblyPage.razor"
        
     private string InputTextProvided;
 

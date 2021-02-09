@@ -33,6 +33,12 @@ namespace BlazorApp.Data
             return MipsInstructions.Instructions.ContainsKey(opCode);
         }
 
+        public ApprovedInstruction GetNextInstruction() 
+        {
+            return Instructions.ElementAt(InstructionIndex);
+        }
+        
+
 
 
     }

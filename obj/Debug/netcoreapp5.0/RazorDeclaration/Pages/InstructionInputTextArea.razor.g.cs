@@ -102,7 +102,7 @@ using System.Collections.Generic;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 62 "C:\Users\kenne\source\repos\BlazorApp\Pages\InstructionInputTextArea.razor"
+#line 61 "C:\Users\kenne\source\repos\BlazorApp\Pages\InstructionInputTextArea.razor"
        
     private string InputTextGiven;
 
@@ -113,7 +113,7 @@ using System.Collections.Generic;
 
     public void CompileInput(MouseEventArgs e)
     {
-        InstructionManager.FilterInstructions(SplitInstructions(InputTextGiven));
+        ExecutionManager.InstructionManager.FilterInstructions(SplitInstructions(InputTextGiven));
         InputDisabled = !InputDisabled;
         InvokeAsync(() => StateHasChanged()); ;
     }
@@ -135,8 +135,7 @@ using System.Collections.Generic;
     public void ExecuteInstruction()
     {
         //TODO Make this an execute next instruction method
-        ExecutionManager.ExecuteInstruction(InstructionManager.Instructions.ElementAt(InstructionManager.InstructionIndex));
-        InstructionManager.InstructionIndex++;
+        ExecutionManager.ExecuteNextIntsruction();
         RegisterState.RegistersStateChanged();
     }
 
@@ -145,7 +144,6 @@ using System.Collections.Generic;
 #nullable disable
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private RegisterState RegisterState { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private ExecutionManager ExecutionManager { get; set; }
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private ProvidedInstructionManager InstructionManager { get; set; }
     }
 }
 #pragma warning restore 1591

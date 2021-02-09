@@ -1,5 +1,4 @@
-﻿@inject ProvidedInstructionManager InstructionManager
-@inject ExecutionManager ExecutionManager
+﻿@inject ExecutionManager ExecutionManager
 @inject RegisterState RegisterState
 
 <div class="code-area-container">
@@ -22,7 +21,7 @@
         <span class="oi oi-media-play"></span> Execute
     </button>
     <ul class="list-group executing-instruction-list">
-        @if (!InstructionManager.Instructions.Any())
+        @if (!ExecutionManager.InstructionManager.Instructions.Any())
         {
             // fill table with empty data
             for (int i = 0; i < 5; i++)
@@ -40,10 +39,10 @@
         else
         {
             var i = 0;
-            @foreach (var instruction in InstructionManager.Instructions)
+            @foreach (var instruction in ExecutionManager.InstructionManager.Instructions)
             {
                 var placeHolderListItemClass = "list-group-item";
-                if (InstructionManager.InstructionIndex == i) 
+                if (ExecutionManager.InstructionManager.InstructionIndex == i) 
                 {
                     placeHolderListItemClass = placeHolderListItemClass + " next-instruction";
                 }
@@ -69,7 +68,7 @@
 
     public void CompileInput(MouseEventArgs e)
     {
-        InstructionManager.FilterInstructions(SplitInstructions(InputTextGiven));
+        ExecutionManager.InstructionManager.FilterInstructions(SplitInstructions(InputTextGiven));
         InputDisabled = !InputDisabled;
         InvokeAsync(() => StateHasChanged()); ;
     }
@@ -91,8 +90,7 @@
     public void ExecuteInstruction()
     {
         //TODO Make this an execute next instruction method
-        ExecutionManager.ExecuteInstruction(InstructionManager.Instructions.ElementAt(InstructionManager.InstructionIndex));
-        InstructionManager.InstructionIndex++;
+        ExecutionManager.ExecuteNextIntsruction();
         RegisterState.RegistersStateChanged();
     }
 }

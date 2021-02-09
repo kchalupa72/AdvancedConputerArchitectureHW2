@@ -265,11 +265,11 @@ app {
 }
 
 .next-instruction {
-    background-color: green;
+    background-color: #80ff80;
 }
 
 .just-changed {
-    background-color: yellow;
+    background-color: #ffff66;
 }
 
 .memoryArea {
