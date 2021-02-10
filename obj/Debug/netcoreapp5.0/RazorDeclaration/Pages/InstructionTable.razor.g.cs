@@ -106,7 +106,7 @@ using System.Collections.Generic;
        
     private InstructionSet instructionSet = new InstructionSet();
 
-    private Dictionary<string, string> GetInstructions()
+    private Dictionary<string, string> GetSetInstructions()
     {
         return instructionSet.Instructions;
     }

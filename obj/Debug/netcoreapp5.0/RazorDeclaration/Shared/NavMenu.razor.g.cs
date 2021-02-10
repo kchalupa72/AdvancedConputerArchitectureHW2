@@ -102,7 +102,7 @@ using System.Collections.Generic;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 33 "C:\Users\kenne\source\repos\BlazorApp\Shared\NavMenu.razor"
+#line 23 "C:\Users\kenne\source\repos\BlazorApp\Shared\NavMenu.razor"
        
     private bool collapseNavMenu = true;
 

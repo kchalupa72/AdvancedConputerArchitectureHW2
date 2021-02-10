@@ -10,13 +10,17 @@ namespace BlazorApp.Data
 
         private static string LastChangedRegister = String.Empty;
 
-        public Registers() 
+        private RegisterState RegisterState;
+
+        public Registers(RegisterState registerState) 
         {
             InstantiateRegisters();
+            RegisterState = registerState;
         }
 
         public void InstantiateRegisters() 
         {
+            RegisterRepo.Clear();
             foreach (FieldInfo field in typeof(RegisterIdentifierConstants).GetFields())
             {
                 RegisterRepo.Add(field.GetValue(null).ToString(), new Register { Identifier = field.GetValue(null).ToString(), Value = 5, JustChanged = false });
@@ -43,5 +47,9 @@ namespace BlazorApp.Data
             LastChangedRegister = registerToChange.Identifier;
         }
 
+        public void ResetRegisterValues() 
+        {
+            InstantiateRegisters();
+        }
     }
 }

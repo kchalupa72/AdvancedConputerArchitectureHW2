@@ -102,21 +102,29 @@ using System.Collections.Generic;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 24 "C:\Users\kenne\source\repos\BlazorApp\Pages\RegisterTable.razor"
+#line 29 "C:\Users\kenne\source\repos\BlazorApp\Pages\RegisterTable.razor"
        
+
     public void RefreshMe()
     {
         StateHasChanged();
+
+        if (RegisterState.ResetRegisters)
+        {
+            registers.ResetRegisterValues();
+            RegisterState.ResetRegisters = false;
+        }
     }
 
     public string GetRegisterChangeClass(bool justChanged)
     {
-        return (justChanged)? "just-changed" : "";
+        return (justChanged) ? "just-changed" : "";
     }
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private RegisterState RegisterState { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private Registers registers { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿@inject Registers registers
+@inject RegisterState RegisterState
 
 <h4>Registers:</h4>
 
@@ -6,7 +7,9 @@
     <thead>
         <tr>
             <th scope="col">Register</th>
-            <th scope="col">Value</th>
+            <th scope="col">Decimal</th>
+            <th scope="col">Binary</th>
+            <th scope="col">Hex</th>
         </tr>
     </thead>
     <tbody>
@@ -15,6 +18,8 @@
             <tr class="@GetRegisterChangeClass(register.Value.JustChanged)">
                 <th scope="row">@register.Key</th>
                 <td>@register.Value.Value.ToString()</td>
+                <td>@Convert.ToString(register.Value.Value, 2)</td>
+                <td>@("0x" + register.Value.Value.ToString("X"))</td>
             </tr>
 
         }
@@ -22,13 +27,20 @@
 </table>
 
 @code {
+
     public void RefreshMe()
     {
         StateHasChanged();
+
+        if (RegisterState.ResetRegisters)
+        {
+            registers.ResetRegisterValues();
+            RegisterState.ResetRegisters = false;
+        }
     }
 
     public string GetRegisterChangeClass(bool justChanged)
     {
-        return (justChanged)? "just-changed" : "";
+        return (justChanged) ? "just-changed" : "";
     }
 }

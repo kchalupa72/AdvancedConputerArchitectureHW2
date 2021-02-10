@@ -20,11 +20,6 @@
 
     protected RegisterTable RegisterTableChildComponent;
 
-    public void CompileInstructions()
-    {
-
-    }
-
     protected override void OnInitialized()
     {
         registerState.OnChange += StateHasChanged;
@@ -39,5 +34,6 @@
     public void Dispose()
     {
         registerState.OnChange -= StateHasChanged;
+        registerState.OnChange -= UpdateRegisterTable;
     }
 }

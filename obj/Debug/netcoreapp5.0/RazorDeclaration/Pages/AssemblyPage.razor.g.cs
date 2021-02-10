@@ -109,11 +109,6 @@ using System.Collections.Generic;
 
     protected RegisterTable RegisterTableChildComponent;
 
-    public void CompileInstructions()
-    {
-
-    }
-
     protected override void OnInitialized()
     {
         registerState.OnChange += StateHasChanged;
@@ -128,6 +123,7 @@ using System.Collections.Generic;
     public void Dispose()
     {
         registerState.OnChange -= StateHasChanged;
+        registerState.OnChange -= UpdateRegisterTable;
     }
 
 #line default

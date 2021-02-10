@@ -6,6 +6,8 @@ namespace BlazorApp.Data
     {
         public event Action OnChange;
 
+        public bool ResetRegisters = false;
+
         public bool RegistersChanged { get; private set; }
 
         public void RegistersStateChanged() 

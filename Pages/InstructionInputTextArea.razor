@@ -4,11 +4,11 @@
 <div class="code-area-container">
     <h4>Instruction Input:</h4>
 
-    <button type="button" class="btn btn-primary" @onclick="CompileInput">
+    <button type="button" class="btn btn-primary" disabled="@(CanEdit)" @onclick="CompileInput">
         <span class="oi oi-book"></span>
         Compile
     </button>
-    <button type="button" class="btn btn-warning" @onclick="(e => InputDisabled = !InputDisabled)">
+    <button type="button" class="btn btn-warning" disabled="@(!CanEdit)" @onclick="RegisterEdit">
         <span class="oi oi-document"></span>
         Edit
     </button>
@@ -17,7 +17,7 @@
 
 <div class="code-area-container">
     <h4>Execution Instructions:</h4>
-    <button type="button" class="btn btn-success" @onclick="ExecuteInstruction">
+    <button type="button" class="btn btn-success" disabled="@ExecutionManager.EndOfInstructionSet()" @onclick="ExecuteInstruction">
         <span class="oi oi-media-play"></span> Execute
     </button>
     <ul class="list-group executing-instruction-list">
@@ -42,7 +42,7 @@
             @foreach (var instruction in ExecutionManager.InstructionManager.Instructions)
             {
                 var placeHolderListItemClass = "list-group-item";
-                if (ExecutionManager.InstructionManager.InstructionIndex == i) 
+                if (ExecutionManager.InstructionManager.InstructionIndex == i)
                 {
                     placeHolderListItemClass = placeHolderListItemClass + " next-instruction";
                 }
@@ -56,40 +56,40 @@
     </ul>
 </div>
 
-
-
 @code {
     private string InputTextGiven;
 
-    //private ProvidedInstructionManager InstructionManager = new ProvidedInstructionManager();
-
-
     public bool InputDisabled = false;
 
-    public void CompileInput(MouseEventArgs e)
+    public bool CanEdit = false;
+
+    private void CanEditToggle()
     {
-        ExecutionManager.InstructionManager.FilterInstructions(SplitInstructions(InputTextGiven));
-        InputDisabled = !InputDisabled;
-        InvokeAsync(() => StateHasChanged()); ;
+        CanEdit = !CanEdit;
     }
 
-    private List<string> SplitInstructions(string instructionsGiven)
+    public void CompileInput()
     {
-        var instructions = InputTextGiven.Split(new Char[] { ';', '\n' }).ToList();
-        instructions.RemoveAll(i => string.IsNullOrEmpty(i));
-        return instructions;
+        ExecutionManager.InstructionManager.ProcessInstructions(InputTextGiven);
+        InputDisabled = !InputDisabled;
+        RegisterState.ResetRegisters = true;
+        CanEditToggle();
+        RegisterState.RegistersStateChanged();
+    }
+
+    private void RegisterEdit()
+    {
+        InputDisabled = !InputDisabled;
+        CanEditToggle();
     }
 
     private string StringifyInstruction(ApprovedInstruction instruction)
     {
-        var stringInstruction = instruction.Operation;
-        instruction.Arguements.ForEach(arg => stringInstruction = stringInstruction + " " + arg);
-        return stringInstruction;
+        return ExecutionManager.InstructionManager.StringifyInstruction(instruction);
     }
 
     public void ExecuteInstruction()
     {
-        //TODO Make this an execute next instruction method
         ExecutionManager.ExecuteNextIntsruction();
         RegisterState.RegistersStateChanged();
     }

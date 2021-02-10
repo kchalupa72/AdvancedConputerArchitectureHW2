@@ -102,39 +102,41 @@ using System.Collections.Generic;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 61 "C:\Users\kenne\source\repos\BlazorApp\Pages\InstructionInputTextArea.razor"
+#line 59 "C:\Users\kenne\source\repos\BlazorApp\Pages\InstructionInputTextArea.razor"
        
     private string InputTextGiven;
 
-    //private ProvidedInstructionManager InstructionManager = new ProvidedInstructionManager();
-
-
     public bool InputDisabled = false;
 
-    public void CompileInput(MouseEventArgs e)
+    public bool CanEdit = false;
+
+    private void CanEditToggle()
     {
-        ExecutionManager.InstructionManager.FilterInstructions(SplitInstructions(InputTextGiven));
-        InputDisabled = !InputDisabled;
-        InvokeAsync(() => StateHasChanged()); ;
+        CanEdit = !CanEdit;
     }
 
-    private List<string> SplitInstructions(string instructionsGiven)
+    public void CompileInput()
     {
-        var instructions = InputTextGiven.Split(new Char[] { ';', '\n' }).ToList();
-        instructions.RemoveAll(i => string.IsNullOrEmpty(i));
-        return instructions;
+        ExecutionManager.InstructionManager.ProcessInstructions(InputTextGiven);
+        InputDisabled = !InputDisabled;
+        RegisterState.ResetRegisters = true;
+        CanEditToggle();
+        RegisterState.RegistersStateChanged();
+    }
+
+    private void RegisterEdit()
+    {
+        InputDisabled = !InputDisabled;
+        CanEditToggle();
     }
 
     private string StringifyInstruction(ApprovedInstruction instruction)
     {
-        var stringInstruction = instruction.Operation;
-        instruction.Arguements.ForEach(arg => stringInstruction = stringInstruction + " " + arg);
-        return stringInstruction;
+        return ExecutionManager.InstructionManager.StringifyInstruction(instruction);
     }
 
     public void ExecuteInstruction()
     {
-        //TODO Make this an execute next instruction method
         ExecutionManager.ExecuteNextIntsruction();
         RegisterState.RegistersStateChanged();
     }

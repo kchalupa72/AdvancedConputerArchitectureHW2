@@ -31,6 +31,7 @@ namespace BlazorApp.Data
         public void ExecuteInstruction(ApprovedInstruction instruction) 
         {
 
+            //TODO Clean up code to better organize handling instruction execution, probably with Func or Delegates
             if (instruction.Operation == OperationCodeConstants.Add)
             {
                 var firstRegisterIdentifier = instruction.Arguements[0];
@@ -58,8 +59,11 @@ namespace BlazorApp.Data
                 var sum = AddInstructionsUtil.Incr(firstRegisterValue);
                 registers.ChangeRegisterValue(firstRegisterIdentifier, sum);
             }
+        }
 
-            
+        public bool EndOfInstructionSet()
+        {
+            return (InstructionManager.Instructions.Count <= InstructionManager.InstructionIndex);
         }
     }
 }
