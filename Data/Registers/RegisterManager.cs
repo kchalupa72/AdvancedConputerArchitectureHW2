@@ -4,15 +4,16 @@ using System.Reflection;
 
 namespace BlazorApp.Data
 {
-    public class Registers
+    public class RegisterManager
     {
         public Dictionary<string, Register> RegisterRepo = new Dictionary<string, Register>();
+
 
         private static string LastChangedRegister = String.Empty;
 
         private RegisterState RegisterState;
 
-        public Registers(RegisterState registerState) 
+        public RegisterManager(RegisterState registerState) 
         {
             InstantiateRegisters();
             RegisterState = registerState;
@@ -21,10 +22,17 @@ namespace BlazorApp.Data
         public void InstantiateRegisters() 
         {
             RegisterRepo.Clear();
+            int index = 0;
             foreach (FieldInfo field in typeof(RegisterIdentifierConstants).GetFields())
             {
-                RegisterRepo.Add(field.GetValue(null).ToString(), new Register { Identifier = field.GetValue(null).ToString(), Value = 5, JustChanged = false });
+                RegisterRepo.Add(field.GetValue(null).ToString(), new Register { Identifier = field.GetValue(null).ToString(), Value = 5, JustChanged = false, CodeVal = index});
+                index++;
             }
+        }
+
+        public int GetRegisterCode(string identifier) 
+        {
+            return RegisterRepo[identifier].CodeVal;
         }
 
         public int GetRegisterValue(string identifier) 

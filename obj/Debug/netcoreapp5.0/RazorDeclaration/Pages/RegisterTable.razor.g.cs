@@ -102,7 +102,7 @@ using System.Collections.Generic;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 29 "C:\Users\kenne\source\repos\BlazorApp\Pages\RegisterTable.razor"
+#line 28 "C:\Users\kenne\source\repos\BlazorApp\Pages\RegisterTable.razor"
        
 
     public void RefreshMe()
@@ -125,7 +125,7 @@ using System.Collections.Generic;
 #line hidden
 #nullable disable
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private RegisterState RegisterState { get; set; }
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private Registers registers { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private RegisterManager registers { get; set; }
     }
 }
 #pragma warning restore 1591

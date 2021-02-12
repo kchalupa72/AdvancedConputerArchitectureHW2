@@ -9,8 +9,10 @@
         public const string A1 = "$a1";
         public const string A2 = "$a2";
         public const string A3 = "$a3";
-        public const string T8 = "$t8";
-        public const string T9 = "$t9";
+        public const string T0 = "$t0";
+        public const string T1 = "$t1";
+        public const string T2 = "$t2";
+        public const string T3 = "$t3";
         public const string K0 = "$k0";
         public const string K1 = "$k1";
     }

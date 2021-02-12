@@ -1,4 +1,5 @@
-﻿<div class="info-area-container">
+﻿@using BlazorApp.Data.Instructions;
+<div class="info-area-container">
     <h5>Available Instructions:</h5>
     <table class="table table-sm feedback">
         <thead>
@@ -11,17 +12,17 @@
             @foreach (var instruction in GetSetInstructions())
             {
                 <tr>
-                    <th scope="row">@instruction.Key</th>
-                    <td>@instruction.Value</td>
+                    <th scope="row">@instruction.OpName</th>
+                    <td>@instruction.Description</td>
                 </tr>
             }
         </tbody>
     </table>
 </div>
 @code {
-    private InstructionSet instructionSet = new InstructionSet();
+    private InstructionSet instructionSet = new InstructionSet(useMips: false);
 
-    private Dictionary<string, string> GetSetInstructions()
+    private List<OperationInstruction> GetSetInstructions()
     {
         return instructionSet.Instructions;
     }

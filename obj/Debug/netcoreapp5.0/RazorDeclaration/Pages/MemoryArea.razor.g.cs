@@ -101,6 +101,30 @@ using System.Collections.Generic;
         {
         }
         #pragma warning restore 1998
+#nullable restore
+#line 30 "C:\Users\kenne\source\repos\BlazorApp\Pages\MemoryArea.razor"
+       
+    public string GetMemoryChangeCLass(bool justChanged)
+    {
+        return (justChanged) ? "just-changed" : "";
+    }
+
+    public void RefreshMe()
+    {
+        StateHasChanged();
+
+        if (MemoryState.ResetMemory)
+        {
+            MemoryManager.ResetMemory();
+            MemoryState.ResetMemory = false;
+        }
+    }
+
+#line default
+#line hidden
+#nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private MemoryManager MemoryManager { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private MemoryState MemoryState { get; set; }
     }
 }
 #pragma warning restore 1591

@@ -94,6 +94,13 @@ using System.Collections.Generic;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 1 "C:\Users\kenne\source\repos\BlazorApp\Pages\InstructionTable.razor"
+using BlazorApp.Data.Instructions;
+
+#line default
+#line hidden
+#nullable disable
     public partial class InstructionTable : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
@@ -102,11 +109,11 @@ using System.Collections.Generic;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 21 "C:\Users\kenne\source\repos\BlazorApp\Pages\InstructionTable.razor"
+#line 22 "C:\Users\kenne\source\repos\BlazorApp\Pages\InstructionTable.razor"
        
-    private InstructionSet instructionSet = new InstructionSet();
+    private InstructionSet instructionSet = new InstructionSet(useMips: false);
 
-    private Dictionary<string, string> GetSetInstructions()
+    private List<OperationInstruction> GetSetInstructions()
     {
         return instructionSet.Instructions;
     }

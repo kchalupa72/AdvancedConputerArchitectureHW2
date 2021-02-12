@@ -8,6 +8,8 @@ namespace BlazorApp.Data
         {
             { MIPSOperationCodeConstants.Add, "Add $s1 $s2 $s3" },
             { MIPSOperationCodeConstants.Sub, "Sub $s1 $s2 $s3" },
+            { MIPSOperationCodeConstants.Addi, "LW $s1 $s2 $s3" },
+
         };
     }
 }

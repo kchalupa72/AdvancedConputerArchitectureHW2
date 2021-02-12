@@ -27,9 +27,12 @@ namespace BlazorApp
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
             services.AddSingleton<ProvidedInstructionManager>();
-            services.AddSingleton<Registers>();
+            services.AddSingleton<RegisterManager>();
             services.AddSingleton<ExecutionManager>();
             services.AddSingleton<RegisterState>();
+            services.AddSingleton<MemoryState>();
+            services.AddSingleton<MemoryManager>();
+            services.AddSingleton<MemoryState>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

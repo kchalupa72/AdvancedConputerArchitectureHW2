@@ -102,7 +102,7 @@ using System.Collections.Generic;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 59 "C:\Users\kenne\source\repos\BlazorApp\Pages\InstructionInputTextArea.razor"
+#line 63 "C:\Users\kenne\source\repos\BlazorApp\Pages\InstructionInputTextArea.razor"
        
     private string InputTextGiven;
 
@@ -120,8 +120,10 @@ using System.Collections.Generic;
         ExecutionManager.InstructionManager.ProcessInstructions(InputTextGiven);
         InputDisabled = !InputDisabled;
         RegisterState.ResetRegisters = true;
+        MemoryState.ResetMemory = true;
         CanEditToggle();
         RegisterState.RegistersStateChanged();
+        MemoryState.MemoryStateChanged();
     }
 
     private void RegisterEdit()
@@ -135,15 +137,23 @@ using System.Collections.Generic;
         return ExecutionManager.InstructionManager.StringifyInstruction(instruction);
     }
 
+    private string GetCodeRepresentationOfInstruction(ApprovedInstruction instruction) 
+    {
+        return ExecutionManager.GetBinaryExecutionRepresentation(instruction);
+    }
+
     public void ExecuteInstruction()
     {
         ExecutionManager.ExecuteNextIntsruction();
         RegisterState.RegistersStateChanged();
+        MemoryState.MemoryStateChanged();
+
     }
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private MemoryState MemoryState { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private RegisterState RegisterState { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private ExecutionManager ExecutionManager { get; set; }
     }

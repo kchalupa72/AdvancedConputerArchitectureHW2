@@ -1,6 +1,7 @@
 ﻿@page "/Assembly"
 @implements IDisposable
 @inject RegisterState registerState
+@inject MemoryState memoryState
 
 <h3>Assembly Page</h3>
 <div class="body-assembly">
@@ -11,7 +12,7 @@
     </div>
     <div class="preview-area">
         <RegisterTable @ref="RegisterTableChildComponent" />
-        <MemoryArea />
+        <MemoryArea @ref="MemoryTableChildComponent" />
     </div>
 </div>
 
@@ -20,20 +21,29 @@
 
     protected RegisterTable RegisterTableChildComponent;
 
+    protected MemoryArea MemoryTableChildComponent;
+
     protected override void OnInitialized()
     {
         registerState.OnChange += StateHasChanged;
         registerState.OnChange += UpdateRegisterTable;
+        registerState.OnChange += UpdateMemoryTable;
     }
 
     private void UpdateRegisterTable()
     {
         RegisterTableChildComponent.RefreshMe();
+    }    
+    
+    private void UpdateMemoryTable()
+    {
+        MemoryTableChildComponent.RefreshMe();
     }
 
     public void Dispose()
     {
         registerState.OnChange -= StateHasChanged;
         registerState.OnChange -= UpdateRegisterTable;
+        registerState.OnChange -= UpdateMemoryTable;
     }
 }

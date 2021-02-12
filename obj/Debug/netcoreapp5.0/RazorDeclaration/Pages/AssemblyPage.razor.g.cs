@@ -103,32 +103,42 @@ using System.Collections.Generic;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 18 "C:\Users\kenne\source\repos\BlazorApp\Pages\AssemblyPage.razor"
+#line 19 "C:\Users\kenne\source\repos\BlazorApp\Pages\AssemblyPage.razor"
        
     private string InputTextProvided;
 
     protected RegisterTable RegisterTableChildComponent;
 
+    protected MemoryArea MemoryTableChildComponent;
+
     protected override void OnInitialized()
     {
         registerState.OnChange += StateHasChanged;
         registerState.OnChange += UpdateRegisterTable;
+        registerState.OnChange += UpdateMemoryTable;
     }
 
     private void UpdateRegisterTable()
     {
         RegisterTableChildComponent.RefreshMe();
+    }    
+    
+    private void UpdateMemoryTable()
+    {
+        MemoryTableChildComponent.RefreshMe();
     }
 
     public void Dispose()
     {
         registerState.OnChange -= StateHasChanged;
         registerState.OnChange -= UpdateRegisterTable;
+        registerState.OnChange -= UpdateMemoryTable;
     }
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private MemoryState memoryState { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private RegisterState registerState { get; set; }
     }
 }

@@ -15,10 +15,16 @@ namespace BlazorApp.Data
         {
             var instructionComponents = instructionGiven.Split(' ').ToList();
 
-            Operation = instructionComponents[0];
-            instructionComponents.RemoveAt(0);
+            var tempComponents = new List<string>();
+            foreach (var component in instructionComponents)
+            {
+                tempComponents.Add(component.Trim(','));
+            }
 
-            Arguements = instructionComponents;
+            Operation = tempComponents[0].ToLower();
+            tempComponents.RemoveAt(0);
+
+            Arguements = tempComponents;
         }
     }
 }

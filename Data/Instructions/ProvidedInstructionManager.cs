@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace BlazorApp.Data
@@ -38,7 +39,7 @@ namespace BlazorApp.Data
 
         private static List<string> SplitInstructions(string instructionsGiven)
         {
-            var instructions = instructionsGiven.Split(new char[] { ';', '\n' }).ToList();
+            var instructions = instructionsGiven.Split(new char[] { ';', '\n'}).ToList();
             instructions.RemoveAll(i => string.IsNullOrEmpty(i));
             return instructions;
         }
@@ -48,15 +49,21 @@ namespace BlazorApp.Data
             var instructionComponents = instructionGiven.Split(' ').ToList();
 
             // get Op Code of instruction statement
-            var opCode = instructionComponents[0];
+            var opCode = instructionComponents[0].ToLower();
 
             // check if operation code exist
-            return MipsInstructions.Instructions.ContainsKey(opCode);
+            return OperationInstructions.Instructions.Any( i => i.OpName.Equals(opCode));
         }
 
         public ApprovedInstruction GetNextInstruction()
         {
             return Instructions.ElementAt(InstructionIndex);
+        }
+
+        public string GetOpCodeBinary(string opName) 
+        {
+            var instruction = OperationInstructions.Instructions.Where(i => i.OpName == opName).Select(i => i.OpCode).FirstOrDefault();
+            return Util.GetBinaryString(instruction, 5);
         }
 
         public string StringifyInstruction(ApprovedInstruction instruction)

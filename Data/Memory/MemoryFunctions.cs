@@ -1,6 +1,6 @@
 ﻿namespace BlazorApp.Data
 {
-    public class RegisterManager
+    public class MemoryFunctions
     {
     }
 }

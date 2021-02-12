@@ -1,6 +1,46 @@
-﻿<textarea class="memoryArea feedback" placeholder="Memory Area"
-          oninput="showPreview()"></textarea>
+﻿@inject MemoryState MemoryState
+@inject MemoryManager MemoryManager
+
+<h4>Memory: </h4>
+<div class="memory-area-container">
+    <table class="table table-striped memory-table">
+        <thead>
+            <tr>
+                <th scope="col">Address</th>
+                <th scope="col">Decimal</th>
+                <th scope="col">Binary</th>
+                <th scope="col">Hex</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var memorySection in MemoryManager.GetMemory())
+            {
+                //<tr class="@GetRegisterChangeClass(register.Value.JustChanged)">
+                <tr class="@GetMemoryChangeCLass(memorySection.Key == MemoryManager.MemoryArea.LastChangedMemoryBlock)">
+                    <th scope="row">@("0x" + memorySection.Key.ToString("X8"))</th>
+                    <td>@memorySection.Value.ToString()</td>
+                    <td>@Convert.ToString(memorySection.Value, 2)</td>
+                    <td>@("0x" + memorySection.Value.ToString("X8"))</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
 
 @code {
+    public string GetMemoryChangeCLass(bool justChanged)
+    {
+        return (justChanged) ? "just-changed" : "";
+    }
 
+    public void RefreshMe()
+    {
+        StateHasChanged();
+
+        if (MemoryState.ResetMemory)
+        {
+            MemoryManager.ResetMemory();
+            MemoryState.ResetMemory = false;
+        }
+    }
 }

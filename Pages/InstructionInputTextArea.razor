@@ -1,5 +1,6 @@
 ﻿@inject ExecutionManager ExecutionManager
 @inject RegisterState RegisterState
+@inject MemoryState MemoryState 
 
 <div class="code-area-container">
     <h4>Instruction Input:</h4>
@@ -46,10 +47,13 @@
                 {
                     placeHolderListItemClass = placeHolderListItemClass + " next-instruction";
                 }
-                <li class="@placeHolderListItemClass">
-                    @StringifyInstruction(instruction);
-                </li>
-
+                    <li class="@placeHolderListItemClass">
+                        @StringifyInstruction(instruction);
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        @GetCodeRepresentationOfInstruction(instruction);
+                        
+                    </li>
+                    
                 i++;
             }
         }
@@ -73,8 +77,10 @@
         ExecutionManager.InstructionManager.ProcessInstructions(InputTextGiven);
         InputDisabled = !InputDisabled;
         RegisterState.ResetRegisters = true;
+        MemoryState.ResetMemory = true;
         CanEditToggle();
         RegisterState.RegistersStateChanged();
+        MemoryState.MemoryStateChanged();
     }
 
     private void RegisterEdit()
@@ -88,9 +94,16 @@
         return ExecutionManager.InstructionManager.StringifyInstruction(instruction);
     }
 
+    private string GetCodeRepresentationOfInstruction(ApprovedInstruction instruction) 
+    {
+        return ExecutionManager.GetBinaryExecutionRepresentation(instruction);
+    }
+
     public void ExecuteInstruction()
     {
         ExecutionManager.ExecuteNextIntsruction();
         RegisterState.RegistersStateChanged();
+        MemoryState.MemoryStateChanged();
+
     }
 }

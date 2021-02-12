@@ -1,4 +1,4 @@
-﻿@inject Registers registers
+﻿@inject RegisterManager registers
 @inject RegisterState RegisterState
 
 <h4>Registers:</h4>
@@ -19,9 +19,8 @@
                 <th scope="row">@register.Key</th>
                 <td>@register.Value.Value.ToString()</td>
                 <td>@Convert.ToString(register.Value.Value, 2)</td>
-                <td>@("0x" + register.Value.Value.ToString("X"))</td>
+                <td>@("0x" + register.Value.Value.ToString("X8"))</td>
             </tr>
-
         }
     </tbody>
 </table>
