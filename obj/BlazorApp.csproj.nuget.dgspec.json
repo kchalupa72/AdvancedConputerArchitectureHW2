@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\kenne\\source\\repos\\BlazorApp\\BlazorApp.csproj": {}
+    "C:\\Users\\kechalup\\source\\repos\\AdvancedConputerArchitectureHW2\\BlazorApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\kenne\\source\\repos\\BlazorApp\\BlazorApp.csproj": {
+    "C:\\Users\\kechalup\\source\\repos\\AdvancedConputerArchitectureHW2\\BlazorApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\kenne\\source\\repos\\BlazorApp\\BlazorApp.csproj",
+        "projectUniqueName": "C:\\Users\\kechalup\\source\\repos\\AdvancedConputerArchitectureHW2\\BlazorApp.csproj",
         "projectName": "BlazorApp",
-        "projectPath": "C:\\Users\\kenne\\source\\repos\\BlazorApp\\BlazorApp.csproj",
-        "packagesPath": "C:\\Users\\kenne\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\kenne\\source\\repos\\BlazorApp\\obj\\",
+        "projectPath": "C:\\Users\\kechalup\\source\\repos\\AdvancedConputerArchitectureHW2\\BlazorApp.csproj",
+        "packagesPath": "C:\\Users\\kechalup\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\kechalup\\source\\repos\\AdvancedConputerArchitectureHW2\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\kenne\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\kechalup\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -25,8 +25,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://www.myget.org/F/discord-net/api/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
@@ -44,10 +43,6 @@
         "net5.0": {
           "targetAlias": "netcoreapp5.0",
           "dependencies": {
-            "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": {
-              "target": "Package",
-              "version": "[5.0.2, )"
-            },
             "bootstrap": {
               "target": "Package",
               "version": "[4.6.0, )"

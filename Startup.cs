@@ -24,7 +24,7 @@ namespace BlazorApp
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
 
-            services.AddControllersWithViews().AddRazorRuntimeCompilation();
+            //services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
             services.AddSingleton<ProvidedInstructionManager>();
             services.AddSingleton<RegisterManager>();

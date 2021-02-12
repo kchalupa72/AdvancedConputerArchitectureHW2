@@ -1,27 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "fX0H8KXLGI4lGxzzek21Zuz91LkXDsmLahHI0+vAKifQg+yzkymPXZ9dEk1hYo5It3sipZinrMFUHuaU5hoSAA==",
+  "dgSpecHash": "7Sjh3/C+XQ3qV92JhVu9rF0zsZ0/5msgdAS1btL+NkCUQtuhAOZvhLdTpCvZcd2s6eP3vuPx1Jp4D5GzV07ZAw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\kenne\\source\\repos\\BlazorApp\\BlazorApp.csproj",
+  "projectFilePath": "C:\\Users\\kechalup\\source\\repos\\AdvancedConputerArchitectureHW2\\BlazorApp.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\kenne\\.nuget\\packages\\bootstrap\\4.6.0\\bootstrap.4.6.0.nupkg.sha512",
-    "C:\\Users\\kenne\\.nuget\\packages\\jquery\\3.0.0\\jquery.3.0.0.nupkg.sha512",
-    "C:\\Users\\kenne\\.nuget\\packages\\microsoft.aspnetcore.mvc.razor.extensions\\5.0.2\\microsoft.aspnetcore.mvc.razor.extensions.5.0.2.nupkg.sha512",
-    "C:\\Users\\kenne\\.nuget\\packages\\microsoft.aspnetcore.mvc.razor.runtimecompilation\\5.0.2\\microsoft.aspnetcore.mvc.razor.runtimecompilation.5.0.2.nupkg.sha512",
-    "C:\\Users\\kenne\\.nuget\\packages\\microsoft.aspnetcore.razor.language\\5.0.2\\microsoft.aspnetcore.razor.language.5.0.2.nupkg.sha512",
-    "C:\\Users\\kenne\\.nuget\\packages\\microsoft.codeanalysis.analyzers\\3.0.0\\microsoft.codeanalysis.analyzers.3.0.0.nupkg.sha512",
-    "C:\\Users\\kenne\\.nuget\\packages\\microsoft.codeanalysis.common\\3.8.0\\microsoft.codeanalysis.common.3.8.0.nupkg.sha512",
-    "C:\\Users\\kenne\\.nuget\\packages\\microsoft.codeanalysis.csharp\\3.8.0\\microsoft.codeanalysis.csharp.3.8.0.nupkg.sha512",
-    "C:\\Users\\kenne\\.nuget\\packages\\microsoft.codeanalysis.razor\\5.0.2\\microsoft.codeanalysis.razor.5.0.2.nupkg.sha512",
-    "C:\\Users\\kenne\\.nuget\\packages\\microsoft.extensions.dependencymodel\\5.0.0\\microsoft.extensions.dependencymodel.5.0.0.nupkg.sha512",
-    "C:\\Users\\kenne\\.nuget\\packages\\microsoft.netcore.platforms\\2.1.2\\microsoft.netcore.platforms.2.1.2.nupkg.sha512",
-    "C:\\Users\\kenne\\.nuget\\packages\\popper.js\\1.16.1\\popper.js.1.16.1.nupkg.sha512",
-    "C:\\Users\\kenne\\.nuget\\packages\\system.collections.immutable\\5.0.0\\system.collections.immutable.5.0.0.nupkg.sha512",
-    "C:\\Users\\kenne\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
-    "C:\\Users\\kenne\\.nuget\\packages\\system.reflection.metadata\\5.0.0\\system.reflection.metadata.5.0.0.nupkg.sha512",
-    "C:\\Users\\kenne\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.7.1\\system.runtime.compilerservices.unsafe.4.7.1.nupkg.sha512",
-    "C:\\Users\\kenne\\.nuget\\packages\\system.text.encoding.codepages\\4.5.1\\system.text.encoding.codepages.4.5.1.nupkg.sha512",
-    "C:\\Users\\kenne\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512"
+    "C:\\Users\\kechalup\\.nuget\\packages\\bootstrap\\4.6.0\\bootstrap.4.6.0.nupkg.sha512",
+    "C:\\Users\\kechalup\\.nuget\\packages\\jquery\\3.0.0\\jquery.3.0.0.nupkg.sha512",
+    "C:\\Users\\kechalup\\.nuget\\packages\\popper.js\\1.16.1\\popper.js.1.16.1.nupkg.sha512"
   ],
   "logs": []
 }
