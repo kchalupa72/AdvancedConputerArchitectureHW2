@@ -212,6 +212,11 @@ namespace BlazorApp.Data
             return "[ " + opCodeBinaryString + " ][ " + firstOperandBinaryString + " ][ " + SecondOperandBinaryString + " ]";
         }
 
+        //private string GetOperationType() 
+        //{
+        
+        //}
+
         public bool EndOfInstructionSet()
         {
             return (InstructionManager.Instructions.Count <= InstructionManager.InstructionIndex);
