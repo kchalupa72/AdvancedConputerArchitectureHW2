@@ -11,8 +11,6 @@ namespace BlazorApp.Data
         {
             { OperationCodeConstants.Lw, 8 },
             { OperationCodeConstants.Sw, 9 },
-            { OperationCodeConstants.Sw, 9 },
-            { OperationCodeConstants.Sw, 9 },
         };
     }
 }

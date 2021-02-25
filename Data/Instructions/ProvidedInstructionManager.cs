@@ -63,7 +63,7 @@ namespace BlazorApp.Data
         public string GetOpCodeBinary(string opName) 
         {
             var instruction = OperationInstructions.Instructions.Where(i => i.OpName == opName).Select(i => i.OpCode).FirstOrDefault();
-            return Util.GetBinaryString(instruction, 5);
+            return Util.GetBinaryString(instruction, 6);
         }
 
         public string StringifyInstruction(ApprovedInstruction instruction)

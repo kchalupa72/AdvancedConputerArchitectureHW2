@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 
 namespace BlazorApp.Data
 {
@@ -136,7 +137,7 @@ namespace BlazorApp.Data
                 RegisterValue = RegisterManager.GetRegisterValue(instruction.Arguements[0]),
                 RegisterIdentifier = instruction.Arguements[0],
                 Offset = int.Parse(instruction.Arguements[1]),
-                BaseAddress = int.Parse(instruction.Arguements[2]),
+                BaseAddress = RegisterManager.GetRegisterValue(instruction.Arguements[2]),
             };
             
             if (OperationCodeConstants.Lw.Equals(instruction.Operation)) 
@@ -148,6 +149,8 @@ namespace BlazorApp.Data
                 MemoryManager.SetMemoryAtAddress(loadInstructionMeta.BaseAddress + loadInstructionMeta.Offset, RegisterManager.GetRegisterValue(loadInstructionMeta.RegisterIdentifier));
             }
         }
+
+        
 
         private ArithmeticInstructionMeta GetInstructionMeta(ApprovedInstruction instruction, Func<int, int, int> arithmeticFunction, Func<int, int, bool> conditionalFunction) 
         {
@@ -195,26 +198,75 @@ namespace BlazorApp.Data
             RegisterManager.ChangeRegisterValue(arithmeticInstruction.DestinationIdentifier, result);
         }
 
-
         public string GetBinaryExecutionRepresentation(ApprovedInstruction instruction) 
+        {
+            var result = "";
+            if (OperationArithmeticInstructions.ArithmeticInstructions.ContainsKey(instruction.Operation))
+            {
+                result = GetArithmeticBinaryString(instruction);
+            }
+            else if (OperationLoadInstructions.LoadInstructions.ContainsKey(instruction.Operation))
+            {
+                result = GetLoadBinaryString(instruction);
+            }
+
+            return result;
+        }
+
+
+        public string GetArithmeticBinaryString(ApprovedInstruction instruction) 
         {
             // opCode
             var opCodeBinaryString = InstructionManager.GetOpCodeBinary(instruction.Operation);
             
+
+            // Operand 1
+            var firstOperandCode = RegisterManager.GetRegisterCode(instruction.Arguements[0]);
+            var firstOperandBinaryString = Util.GetBinaryString(firstOperandCode, 5);
+
+            var secondOperandCode = 0;
+            var SecondOperandBinaryString = "";
+            // Operand 2
+            if (instruction.Operation.EndsWith('i'))
+            {
+                secondOperandCode = int.Parse(instruction.Arguements[1]);
+                SecondOperandBinaryString = Util.GetBinaryString(firstOperandCode, 21);
+            }
+            else
+            {
+                secondOperandCode = RegisterManager.GetRegisterCode(instruction.Arguements[1]);
+                SecondOperandBinaryString = Util.GetBinaryString(firstOperandCode, 5);
+            }
+
+            return "[ " + opCodeBinaryString + " ][ " + firstOperandBinaryString + " ][ " + SecondOperandBinaryString + " ]";
+        }
+
+
+        public string GetLoadBinaryString(ApprovedInstruction instruction)
+        {
+            // opCode
+            var opCodeBinaryString = InstructionManager.GetOpCodeBinary(instruction.Operation);
+
+
             // Operand 1
             var firstOperandCode = RegisterManager.GetRegisterCode(instruction.Arguements[0]);
             var firstOperandBinaryString = Util.GetBinaryString(firstOperandCode, 5);
 
             // Operand 2
-            var secondOperandCode = RegisterManager.GetRegisterCode(instruction.Arguements[1]);
-            var SecondOperandBinaryString = Util.GetBinaryString(firstOperandCode, 5);
 
-            return "[ " + opCodeBinaryString + " ][ " + firstOperandBinaryString + " ][ " + SecondOperandBinaryString + " ]";
+            var secondOperandCode = int.Parse(instruction.Arguements[1]);
+            var SecondOperandBinaryString = Util.GetBinaryString(secondOperandCode, 16);
+
+            var thirdOperandCode = RegisterManager.GetRegisterCode(instruction.Arguements[2]);
+            var thirdOperandBinaryString = Util.GetBinaryString(firstOperandCode, 5);
+
+
+            return "[ " + opCodeBinaryString + " ][ " + firstOperandBinaryString + " ][ " + SecondOperandBinaryString + " ][ " + thirdOperandBinaryString + " ]";
         }
 
         //private string GetOperationType() 
         //{
-        
+
         //}
 
         public bool EndOfInstructionSet()

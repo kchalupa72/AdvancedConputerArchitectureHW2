@@ -446,3 +446,4 @@ C:\Users\kechalup\source\repos\AdvancedConputerArchitectureHW2\obj\Debug\netcore
 C:\Users\kechalup\source\repos\AdvancedConputerArchitectureHW2\obj\Debug\netcoreapp5.0\BlazorApp.pdb
 C:\Users\kechalup\source\repos\AdvancedConputerArchitectureHW2\obj\Debug\netcoreapp5.0\BlazorApp.genruntimeconfig.cache
 C:\Users\kechalup\source\repos\AdvancedConputerArchitectureHW2\obj\Debug\netcoreapp5.0\BlazorApp.csproj.CopyComplete
+C:\Users\kechalup\source\repos\AdvancedConputerArchitectureHW2\obj\Debug\netcoreapp5.0\BlazorApp.csprojAssemblyReference.cache
